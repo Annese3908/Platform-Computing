@@ -8,8 +8,8 @@ Time spent: **NUMBER_HOURS_SPENT** hours spent in total
 
 The following **required** features are completed:
 
-- [ ] Modifies title in head so that the tab has a unique name, (e.g. About Me). (1pts)
-- [ ] Uses a mix of headers, paragraphs, and div's. (3pts)
+- [X] Modifies title in head so that the tab has a unique name, (e.g. About Me). (1pts)
+- [X] Uses a mix of headers, paragraphs, and div's. (3pts)
 - [ ] Includes at least 3 paragraphs. (3pts)
 - [ ] Includes at least one image. (2pts)
 - [ ] Includes a .css file to style with at least 4 ways to format the elements in the html. (3pts)
@@ -17,7 +17,7 @@ The following **required** features are completed:
 
 The following **bonus** features are implemented:
 
-- [ ] Applies different font(s). (0.5 pt)
+- [X] Applies different font(s). (0.5 pt)
 - [ ] Applies border and margins. (0.5 pt)
 - [ ] DESCRIBE ANY OTHER FEATURES HERE.
 
