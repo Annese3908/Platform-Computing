@@ -24,7 +24,7 @@ The following **bonus** features are implemented:
 ## Screenshot and/or Video Walkthrough
 
 <img src="images/Screenshot 2024-02-12 at 11.34.43 AM.png" title='Screenshot of HTML Code' width='' alt='Screenshot HTML of Code' />
-
+<img src="images/Screenshot 2024-02-12 at 11.41.03 AM.png" title='Screenshot of HTML Code 2' width='' alt='Screenshot HTML of Code 2' />
 <img src="images/Screenshot 2024-02-12 at 11.35.08 AM.png" title='Screenshot of CSS Code' width='' alt='Screenshot CSS of Code' />
 
 ## Notes:
