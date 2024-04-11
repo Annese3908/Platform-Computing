@@ -5,8 +5,7 @@ let total_reward_time = 0;
 
 async function findKeyword(keyword, driver) {
     const page_source = await driver.executeScript('return document.documentElement.outerHTML');
-    console.log(page_source.lower());
-    return keyword.lower() in page_source.lower();
+    return page_source.toLowerCase().includes(keyword.toLowerCase());
 }
 (async function trackMetrics(){
     let driver;
@@ -16,23 +15,18 @@ async function findKeyword(keyword, driver) {
         //navigate to website
         await driver.get('http://localhost:3000/');
          
-        keywords = ['About', 'Me']
-        const reward_time = 100;
+        const keywords = ['About', 'Me']
+        const reward_time = 10000;
 
-            for (keyword in keywords){
+            for (const keyword of keywords){
                 if (findKeyword(keyword, driver)){
-                    driver.sleep(reward_time);
                     total_reward_time += reward_time;
+                    await driver.sleep(reward_time);
                 }
             }
 
-        
-
-    }catch(e){
-        console.log(e);
-    }
-    finally{
+    }finally{
         await driver.quit();
     }
-    console.log(total_reward_time);
- }())
+    console.log(`Total reward time: ${total_reward_time} milliseconds`);
+ }());

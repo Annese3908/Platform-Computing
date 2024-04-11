@@ -17,7 +17,7 @@ async function countElem(tagName, driver) {
         //navigate to website
         await driver.get('http://localhost:3000/');
          
-        let tags = [];
+        let tags = ['img'];
         const reward_time = 10000;
 
         for (let tag of tags){ 
