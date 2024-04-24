@@ -9,12 +9,13 @@ async function countElem(tagName, driver) {
     return elements.length;
 }
 async function findKeyword(keyword, driver) {
-    const page_source = await driver.executeScript('return document.documentElement.outerHTML');
-    return page_source.toLowerCase().includes(keyword.toLowerCase());
+    let page_source = await driver.findElement(By.xpath('/html/body'));
+    let page_text = await page_source.getText();
+    return page_text.toLowerCase().includes(keyword.toLowerCase());
 }
 async function findLink(link, driver) {
     try {
-        const links = await driver.findElement(By.css(link));
+        let links = await driver.findElement(By.css(link));
         await links.click();
         // Return true to indicate the link was found and clicked
         return true;
@@ -38,11 +39,10 @@ async function userAction(action, driver, reward_time, req_list){
         }
     }
     else if (action.toUpperCase() == 'IMAGE'){
-        for (let tag of tags){ 
+        for (let tag of req_list){ 
             numImages = await countElem(tag, driver); 
-            //console.log(numImages);
+            console.log(numImages + ' images found.');
             total_reward_time += reward_time * numImages;
-            //console.log(total_reward_time);
             await driver.sleep(total_reward_time);
         }
     }
@@ -50,7 +50,7 @@ async function userAction(action, driver, reward_time, req_list){
     else if (action.toUpperCase() == 'LINK'){
         for (let link of req_list){
             let count = 0;
-            while(findLink(link, driver) && count < 5){
+            while(await findLink(link, driver)){
                 total_reward_time += reward_time;
                 await driver.sleep(total_reward_time);
                 count++;
@@ -69,11 +69,11 @@ async function userAction(action, driver, reward_time, req_list){
          
         const reward_time = 10000;
         keywords = ['About', 'Me'];
-        total_reward_time += userAction('Keyword', driver, reward_time, keywords);
+        total_reward_time += await userAction('Keyword', driver, reward_time, keywords);
         tags = ['img'];
-        total_reward_time += userAction('IMAGE', driver, reward_time, tags);
+        total_reward_time += await userAction('IMAGE', driver, reward_time, tags);
         links = ['a'];
-        total_reward_time += userAction('LINK', driver, reward_time, links)
+        total_reward_time += await userAction('LINK', driver, reward_time, links)
 
 
           
