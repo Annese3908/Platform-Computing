@@ -4,9 +4,8 @@ const assert = require('assert');
 let total_reward_time = 0;
 
 async function findKeyword(keyword, driver) {
-    let page_source = await driver.findElement(By.xpath('/html/body'));
-    let page_text = await page_source.getText();
-    return page_text.toLowerCase().includes(keyword.toLowerCase());
+    const page_source = await driver.getPageSource();
+    return page_source.toLowerCase().includes(keyword.toLowerCase());
 }
 (async function trackMetrics(){
     let driver;
@@ -19,9 +18,8 @@ async function findKeyword(keyword, driver) {
         const keywords = ['About', 'Me']
         const reward_time = 10000;
 
-            for (let keyword of keywords){
+            for (const keyword of keywords){
                 if (findKeyword(keyword, driver)){
-                    console.log('found ' + keyword);
                     total_reward_time += reward_time;
                     await driver.sleep(reward_time);
                 }

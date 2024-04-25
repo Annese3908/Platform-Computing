@@ -9,9 +9,8 @@ async function countElem(tagName, driver) {
     return elements.length;
 }
 async function findKeyword(keyword, driver) {
-    let page_source = await driver.findElement(By.xpath('/html/body'));
-    let page_text = await page_source.getText();
-    return page_text.toLowerCase().includes(keyword.toLowerCase());
+    let page_source = await driver.getPageSource();
+    return page_source.toLowerCase().includes(keyword.toLowerCase());
 }
 async function findLink(link, driver) {
     try {
